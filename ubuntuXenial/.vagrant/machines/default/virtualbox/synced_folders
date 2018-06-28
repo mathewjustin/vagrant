@@ -1,0 +1,1 @@
+{"virtualbox":{"/home/docker-images":{"guestpath":"/home/docker-images","hostpath":"D:/vagrant/ubuntuXenial/docker-files","disabled":false,"__vagrantfile":true},"/vagrant":{"guestpath":"/vagrant","hostpath":"D:/vagrant/ubuntuXenial","disabled":false,"__vagrantfile":true}}}
