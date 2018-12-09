@@ -1,44 +1,19 @@
-version: '2.2'
+version: '2'
+
 services:
-  elasticsearch:
-    image: docker.elastic.co/elasticsearch/elasticsearch:6.3.0
-    container_name: elasticsearch
+  redis:
+    image: 'bitnami/redis:latest'
     environment:
-      - cluster.name=docker-cluster
-      - bootstrap.memory_lock=true
-      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
-    ulimits:
-      memlock:
-        soft: -1
-        hard: -1
-    volumes:
-      - esdata1:/usr/share/elasticsearch/data
+      # ALLOW_EMPTY_PASSWORD is recommended only for development.
+      - ALLOW_EMPTY_PASSWORD=yes
+      - REDIS_DISABLE_COMMANDS=FLUSHDB,FLUSHALL
+    labels:
+      kompose.service.type: nodeport
     ports:
-      - 9200:9200
-    networks:
-      - esnet
-  elasticsearch2:
-    image: docker.elastic.co/elasticsearch/elasticsearch:6.3.0
-    container_name: elasticsearch2
-    environment:
-      - cluster.name=docker-cluster
-      - bootstrap.memory_lock=true
-      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
-      - "discovery.zen.ping.unicast.hosts=elasticsearch"
-    ulimits:
-      memlock:
-        soft: -1
-        hard: -1
+      - '6379:6379'
     volumes:
-      - esdata2:/usr/share/elasticsearch/data
-    networks:
-      - esnet
+      - 'redis_data:/bitnami/redis'
 
 volumes:
-  esdata1:
+  redis_data:
     driver: local
-  esdata2:
-    driver: local
-
-networks:
-  esnet:
