@@ -9,18 +9,18 @@ fi
 
 echo STARTING TO SET UP DOCKER CONTAINERS
 echo ==========================================
-apt-get install docker-ce
-
+sudo -i
+apt-get install docker.io -y
 echo bringig up Elasticsearch.. 
-cd  ../docker-images/dockerES
+cd  /vagrant/docker-files/dockerES
 docker-compose up
 
 echo bringig up Redis.. 
-cd ../dockerRedis
+cd /vagrant/docker-files/dockerRedis
 docker-compose up
 
 echo bringig up MariaDb.. 
-cd ../dockerMaria
+cd /vagrant/docker-files/dockerMaria
 docker-compose up
 
 
