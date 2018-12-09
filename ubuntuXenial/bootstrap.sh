@@ -17,6 +17,9 @@ sudo curl -L "https://github.com/docker/compose/releases/download/1.23.1/docker-
 
 sudo chmod +x /usr/local/bin/docker-compose
 
+#https://github.com/docker-library/elasticsearch/issues/111
+sudo sysctl -w vm.max_map_count=262144
+
 apt-get install docker.io -y
 echo bringig up Elasticsearch.. 
 cd  /vagrant/docker-files/dockerES
