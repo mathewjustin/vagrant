@@ -34,3 +34,8 @@ cd /vagrant/docker-files/dockerMaria
 docker-compose up -d
 
 
+echo bringig up Cassandra..
+cd /vagrant/docker-files/dockerCassandra
+docker-compose up -d
+
+
